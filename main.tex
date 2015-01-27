@@ -1,0 +1,286 @@
+%master-thesis-summery
+%#BIBTEX pbibtex main
+\documentclass{jsarticle}
+
+\title{Semilinear elliptic equations with a critical Sobolev exponent and a non-homogeneous term}
+\author{Kazune Takahashi \thanks{Graduate School of Mathematical
+Sciences, The University of Tokyo. Email: \texttt{kazune@ms.u-tokyo.ac.jp}}}
+\date{28 January 2015}
+
+\makeatletter
+\renewcommand{\theequation}{%
+\thesection.\arabic{equation}}
+\@addtoreset{equation}{section}
+\makeatother
+
+\usepackage{geometry}
+\geometry{a4paper,left=15mm,right=15mm,top=20mm,bottom=15mm}
+\addtolength{\textheight}{-10mm}
+
+\usepackage{newtxtext,newtxmath}
+
+\usepackage{relsize}
+\usepackage{url}
+\usepackage{enumerate}
+\addtolength{\labelsep}{1zw}
+\newcommand{\sage}{
+\addtolength{\itemindent}{1zw}
+\addtolength{\parindent}{1zw}}
+
+\usepackage{mathtools}
+\usepackage{cases}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\rightmark}
+\lfoot{}
+\cfoot{{\textit{\thepage}}}
+\rfoot{}
+\fancypagestyle{plainhead}{
+\lhead{\leftmark}
+\chead{}
+\rhead{}
+}
+\fancypagestyle{plainfoot}{
+\lfoot{}
+\cfoot{{\textit{\thepage}}}
+\rfoot{}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{\markright{\S~\thesection.~~#1}{}}
+
+\usepackage{amsmath,amssymb}
+\usepackage[amsmath,framed,thmmarks]{ntheorem}
+\allowdisplaybreaks[1]
+
+\theoremstyle{plain}
+\theoremseparator{.}
+\theorembodyfont{\upshape}
+\theoremprework{}
+\theorempostwork{}
+\theoremnumbering{Alph}
+\newtheorem{thm}{定理}
+
+\usepackage{comment}
+
+\newcommand{\pdif}[2]{\frac{\partial #1}{\partial #2}}
+
+\renewcommand{\hat}[1]{\widehat{#1}}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\renewcommand{\ae}{\text{a.\,e.}~}
+\newcommand{\tin}{\text{in}~}
+\newcommand{\ton}{\text{on}~}
+\newcommand{\supp}{\operatorname{supp}}
+
+\newcommand{\dnorm}{\left\|\, \cdot \, \right\|}
+
+\renewcommand{\bibname}{参考文献}
+
+\setcounter{tocdepth}{4}
+\begin{document}
+
+\maketitle
+
+本論文では、以下の方程式を考察する．
+\begin{align}
+ \left\{
+ \begin{aligned}
+  -\Delta u + a u &= b u^p + \lambda f  & &\tin \Omega,  \\
+  u &> 0 & &\tin \Omega, \\
+  u &= 0 & &\ton \partial\Omega.
+ \end{aligned}
+ \right. \tag*{$(\spadesuit)_\lambda$} \label{eq:prob_main}
+\end{align}
+ここで、$N \geq 3$、$\Omega \subset \R^N$は有界領域、
+境界$\partial \Omega$は$C^\infty$級とする．
+$p = (N+2)/(N-2)$をソボレフ臨界指数とする．
+$f \in H^{-1}(\Omega)$は，$f \geq 0$，
+$f \not \equiv 0$をみたすとする．
+$a, b \in L^\infty(\Omega)$とする．
+$\kappa_1$を$-\Delta$の$\Omega$におけるディリクレ境界条件下の
+第$1$固有値とする．$a \geq \kappa ~\tin \Omega$をみたす
+$\kappa > - \kappa_1$が存在すると仮定する．
+また，$b \geq 0 ~\tin \Omega$，$b \not \equiv 0$と仮定する．
+$\lambda > 0$はパラメータである．
+
+ソボレフ臨界指数を持つ半線形楕円型偏微分方程式の
+正値解の存在・非存在は，
+次元$N$や領域の形状に依存していることが知られている．
+ブレジス -- ニレンベルグ\cite{MR709644}~が有名である。
+その中でも、パラメータ$\lambda$が非斉次項につく方程式の研究として、
+タランテッロ\cite{MR1168304}~が有名である。
+自明解を持たないある方程式に、
+少なくとも$2$つの非自明正値解が存在することが示された．
+
+\ref{eq:prob_main}の minimal solution $\underline{u}_\lambda$とは
+\ref{eq:prob_main}の任意の解$u$に対し、$u \geq \underline{u}_\lambda
+~\tin \Omega$をみたすものである。minimal solution 以外の解を
+便宜上 second solution という。
+内藤 -- 佐藤~\cite{MR2886160}では、
+\ref{eq:prob_main}において$a = \kappa$，$b = 1$としたものについて，
+以下の事実が証明された。
+\begin{enumerate}[1.] \sage
+ \item 全ての$N \geq 3$，$\kappa > - \kappa_1$に対し，
+       $0 < \bar{\lambda} < \infty$が存在し，
+       任意の$0 < \lambda < \bar{\lambda}$に対し，
+       minimal solution が存在する．
+ \item $-\kappa_1 < \kappa \leq 0$のとき，全ての$N \geq 3$に対し，
+       任意の$0 < \lambda < \bar{\lambda}$に対し，
+       second solution が存在する．
+ \item $\kappa > 0$のとき，$N = 3, 4, 5$については，
+       任意の$0 < \lambda < \bar{\lambda}$に対し，
+       second solution が存在する．
+       一方，$N \geq 6$については，解が一意的である場合がある．
+\end{enumerate}
+特に3.~は，領域の次元$N$により
+解の存在・非存在が異なることを主張している。
+本論文は，内藤 -- 佐藤~\cite{MR2886160}の議論を踏襲し，
+\ref{eq:prob_main}を考察する．
+
+\ref{eq:prob_main}の minimal solution について以下の定理が従う．
+\begin{thm}[本論文 定理~1.1, ~1.2]
+ \begin{enumerate}[1.] \sage
+  \item 以下の(i) -- (iii)をみたす
+        $0 < \bar{\lambda} < \infty$が存在する．
+        \begin{enumerate}[(i)]
+         \item $0 < \lambda \leq \bar{\lambda}$において，
+               \ref{eq:prob_main}は minimal solution を持つ．
+         \item $\lambda > \bar{\lambda}$において，\ref{eq:prob_main}は弱解
+                を持たない．
+         \item $b > 0 ~\tin \Omega$ならば、$\lambda = \bar{\lambda}$に
+               おける
+               \ref{eq:prob_main}の解は一意的である。
+        \end{enumerate}
+ \end{enumerate}
+\end{thm}
+
+定理~\ref{thm:minimal_solution}を証明では、
+陰関数定理と minimal solution における線形化固有値問題
+\[
+-\Delta \phi + a \phi = \mu p b (\underline{u}_\lambda)^{p-1} \phi
+  ~\tin \Omega, \ \ \phi \in H_0^1(\Omega)
+\] 
+が鍵となっている。
+
+\ref{eq:prob_main} の second solution の結果を述べる．
+比較のため 内藤 -- 佐藤~\cite{MR2886160}の結果を\ref{eq:prob_main}に
+即して述べる．
+
+\begin{thm}[\cite{MR2886160} Theorem 1.3]
+ \label{thm:second_solution_naito_sato}
+ $0 < \lambda < \bar{\lambda}$とする．
+ $\Omega$上$a = \kappa$，$b = 1$は定数とする．
+ 以下の(i), (ii)の
+ いずれかの成立を仮定する．
+ \begin{enumerate}[(i)]
+  \item $-\kappa_1 < \kappa \leq 0$かつ$N \geq 3$．
+  \item $\kappa > 0$かつ$N = 3, 4, 5$．
+ \end{enumerate}
+ このとき，\ref{eq:prob_main}は，minimal solution
+ $\underline{u}_\lambda$
+ 以外の弱解$\bar{u}_\lambda \in H_0^1(\Omega)$を持ち，
+ $\bar{u}_\lambda >
+ \underline{u}_\lambda ~\tin \Omega$が成立する．
+\end{thm}
+
+本論文では、以下の定理を証明する。
+
+\begin{thm}[本論文 定理~1.4] \label{thm:second_solution}
+ $0 < \lambda < \bar{\lambda}$とする．$b$は$\Omega$上の
+ ある点$x_0$で最大値$M = \left\| b \right\|_{L^\infty(\Omega)} > 0$を
+ 達成するものと仮定する．$r_0 > 0$が存在し，
+ $\{ \lvert x - x_0 \rvert < 2r_0 \} \subset \Omega$，かつ，
+ $\{ \lvert x - x_0 \rvert < r_0 \}$上，$b$は連続であり$a$は
+ \begin{equation}
+  a(x) = m_1 + m_2 \lvert x-x_0 \rvert^{q} 
+  + o(\lvert x-x_0 \rvert^{q}) \ \ \tin \{ \lvert x - x_0 \rvert < r_0
+  \}  \label{eq:a_q}
+ \end{equation}
+ であると仮定する．ここで$q > 0$，
+ $m_1 > \kappa$，$m_2 \neq 0$は
+ 定数である．さらに，以下の(i) -- (iv)の
+ いずれかの成立を仮定する．
+ \begin{enumerate}[(i)]
+  \item $m_1 < 0$，かつ，$N \geq 3$．
+  \item $m_1 > 0$，かつ，$N = 3, 4, 5$．
+  \item $m_1 = 0$，かつ，$m_2 < 0$，かつ，$N \geq 3$．
+  \item $m_1 = 0$，かつ，$m_2 > 0$，かつ，$3 \leq N < 6 + 2q$．
+ \end{enumerate}
+ このとき，\ref{eq:prob_main}は，minimal solution
+ $\underline{u}_\lambda$
+ 以外の弱解$\bar{u}_\lambda \in H_0^1(\Omega)$を持ち，
+ $\bar{u}_\lambda >
+ \underline{u}_\lambda ~\tin \Omega$が成立する．
+\end{thm}
+
+内藤 -- 佐藤の
+定理~\ref{thm:second_solution_naito_sato}では，
+$a = \kappa$および$b = 1$であるとき，
+$\kappa$が非正から正へと変化すると，
+\ref{eq:prob_main}の second solution が存在する
+次元$N \geq 3$が，
+$N < \infty$から$N < 6$へと
+段差的に変化することを示している．
+本論文では、$a$は定数ではなく関数であるため、
+定理~\ref{thm:second_solution}~(iv) のケースを
+検討することができる。
+\ref{eq:prob_main}の second solution が存在するという結果は，
+「$N < \infty$」と「$N < 6$」の「中間部分」の結果に
+相当すると考えられる．
+証明では、
+$(\mathrm{PS})$条件を課さない峠の定理と、
+タレンティー関数とソボレフ臨界指数の関係が
+重要な役割を果たす。
+
+\ref{eq:prob_main}の second solutionが
+$(0, \bar{\lambda})$上一様には存在しない場合もある．
+
+\begin{thm}[本論文, 定理~1.5] \label{thm:second_solution_nonex}
+ \begin{enumerate}[1.]  \sage
+  \item $N \geq 3$とする．
+        $b > 0 ~\tin \Omega$であると仮定する．
+        このとき，$0 < \lambda^* < \bar{\lambda}$が存在し，
+        任意の$\lambda^* \leq
+        \lambda < \bar{\lambda}$に対し，\ref{eq:prob_main}は
+        minimal solution $\underline{u}_\lambda$以外の弱解
+        $\bar{u}_\lambda$を持ち，$\bar{u}_\lambda >
+        \underline{u}_\lambda ~\tin \Omega$が成立する．
+  \item $N \geq 6$とする．$R > 0$とし，
+        $\Omega = \{ x \in \R^N \mid \lvert x \rvert < R\}$
+        と仮定する．
+        $a = a(\lvert x \rvert)$，
+        $b = b(\lvert x \rvert)$，
+        $f = f(\lvert x \rvert)$は$\Omega$上球対称とする．
+        また，$0 < \alpha < 1$とし，$a , b \in C^1([0, R])$，
+        $f \in C^\alpha([0, R])$であり，$a$は$[0, R]$上
+        単調増加，$b, f$は$[0, R]$上
+        単調減少と仮定する．また，$a(0), b(0) > 0$とする．
+        このとき，$0 < \lambda_*$が存在し，
+        任意の$0 < \lambda < \lambda_*$に対し，
+        \ref{eq:prob_main}は
+        minimal solution $\underline{u}_\lambda$以外の弱解を持たない．
+ \end{enumerate}
+\end{thm}
+
+定理~\ref{thm:second_solution_nonex}.2の証明では、
+球対称解のみ考慮すれば十分であることを示し、
+動径$r$についての常微分方程式に議論を帰着させる．
+ポホザエフの議論から不等式を出し、十分小さい$\lambda > 0$では
+不等式がみたされないことを示す。
+
+\bibliographystyle{jalpha}
+\bibliography{ref}
+
+\end{document}
